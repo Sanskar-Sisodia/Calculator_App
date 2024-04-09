@@ -11,9 +11,8 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    // Execute build commands here
-                    // For example, for Gradle:
-                    bat './gradlew build'
+                    // Execute Maven build
+                    bat 'mvn clean install'
                 }
             }
         }
@@ -21,9 +20,8 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    // Execute test commands here
-                    // For example, for Gradle:
-                    bat './gradlew test'
+                    // Execute Maven test
+                    bat 'mvn test'
                 }
             }
         }
