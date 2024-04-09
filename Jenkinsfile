@@ -8,16 +8,6 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
-            steps {
-                script {
-                    // Execute the install command to install project dependencies
-                    // For example, for Gradle:
-                    bat './gradlew install'
-                }
-            }
-        }
-
         stage('Build') {
             steps {
                 script {
