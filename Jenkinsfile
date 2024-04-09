@@ -13,16 +13,16 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Clean') {
             steps {
                 script {
-                    // Execute Maven build
-                    bat 'mvn clean install'
+                    // Execute Maven clean
+                    bat 'mvn clean'
                 }
             }
         }
 
-        stage('Run Tests') {
+        stage('Test') {
             steps {
                 script {
                     // Execute Maven test
