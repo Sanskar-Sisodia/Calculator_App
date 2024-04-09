@@ -1,6 +1,9 @@
 name: Selenium Test
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   test:
@@ -18,11 +21,13 @@ jobs:
 
     - name: Set up Chrome WebDriver
       run: |
-        wget -N https://chromedriver.storage.googleapis.com/97.0.4692.71/chromedriver_linux64.zip
-        unzip chromedriver_linux64.zip
-        chmod +x chromedriver
-        sudo mv chromedriver /usr/local/bin/
+        LATEST_CHROMEDRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
+        wget -qP /tmp https://chromedriver.storage.googleapis.com/$LATEST_CHROMEDRIVER_VERSION/chromedriver_linux64.zip
+        unzip -o /tmp/chromedriver_linux64.zip -d /tmp
+        chmod +x /tmp/chromedriver
+        sudo mv /tmp/chromedriver /usr/local/bin/
 
     - name: Run Selenium Tests
       run: |
+        cd path/to/your/project  # Change path to your project directory
         ./gradlew test
