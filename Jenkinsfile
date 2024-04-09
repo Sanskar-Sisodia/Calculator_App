@@ -8,16 +8,12 @@ pipeline {
             }
         }
 
-        stage('Set up environment') {
+        stage('Install Dependencies') {
             steps {
                 script {
-                    sh 'wget -qP /tmp https://chromedriver.storage.googleapis.com/LATEST_RELEASE'
-                    sh 'LATEST_CHROMEDRIVER_VERSION=$(cat /tmp/LATEST_RELEASE)'
-                    sh 'wget -qP /tmp https://chromedriver.storage.googleapis.com/$LATEST_CHROMEDRIVER_VERSION/chromedriver_linux64.zip'
-                    sh 'unzip -o /tmp/chromedriver_linux64.zip -d /tmp'
-                    sh 'chmod +x /tmp/chromedriver'
-                    sh 'sudo mv /tmp/chromedriver /usr/local/bin/'
-                    sh 'java -version' // Check Java version
+                    // Execute the install command to install project dependencies
+                    // For example, for Gradle:
+                    bat './gradlew install'
                 }
             }
         }
@@ -25,7 +21,9 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh './gradlew build'
+                    // Execute build commands here
+                    // For example, for Gradle:
+                    bat './gradlew build'
                 }
             }
         }
@@ -33,7 +31,9 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    sh './gradlew test'
+                    // Execute test commands here
+                    // For example, for Gradle:
+                    bat './gradlew test'
                 }
             }
         }
