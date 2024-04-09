@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         // Specify the Maven installation name configured in Jenkins
-        maven 'maven'
+        maven 'Maven'
     }
 
     stages {
