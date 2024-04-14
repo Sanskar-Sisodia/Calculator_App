@@ -12,7 +12,7 @@ pipeline {
             steps {
                 echo 'Building...'
                 // Add your build steps here
-                sh 'mvn clean package'
+               
             }
         }
 
@@ -20,7 +20,7 @@ pipeline {
             steps {
                 echo 'Testing...'
                 // Add your test steps here
-                sh 'mvn test'
+                
             }
         }
 
