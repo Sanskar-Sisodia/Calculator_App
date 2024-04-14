@@ -1,33 +1,34 @@
 pipeline {
     agent any
 
-    tools {
-        // Specify the Maven installation name configured in Jenkins
-        maven 'Maven'
-    }
-
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/Sanskar-Sisodia/Calculator_App.git', branch: 'main'
+                git 'https://github.com/Sanskar-Sisodia/Calculator_App.git'
             }
         }
 
-        stage('Clean') {
+        stage('Build') {
             steps {
-                script {
-                    // Execute Maven clean
-                    bat 'mvn clean'
-                }
+                echo 'Building...'
+                // Add your build steps here
+                sh 'mvn clean package'
             }
         }
 
         stage('Test') {
             steps {
-                script {
-                    // Execute Maven test
-                    bat 'mvn test'
-                }
+                echo 'Testing...'
+                // Add your test steps here
+                sh 'mvn test'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+                // Add your deployment steps here
+                // For example: deploy to a server, publish artifacts, etc.
             }
         }
     }
