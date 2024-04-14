@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/Sanskar-Sisodia/Calculator_App.git'
+                echo 'Checkout'
             }
         }
 
